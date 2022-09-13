@@ -1,14 +1,12 @@
 from launchpadlib.launchpad import Launchpad
 import json
 import random
-cachedir = "/home/jane/.launchpadlib/cache"
 
-launchpad = Launchpad.login_anonymously('lplib.evergreen.randombug', 'production', cachedir, version = 'devel')
-project = launchpad.projects['evergreen'] 
-bugs = project.searchTasks(status = ['New', 'Triaged', 'Confirmed'])
+cachedir = "./.cache/"
+launchpad = Launchpad.login_anonymously('lplib.evergreen.bug.report', 'production', cachedir, version='devel')
+
+project = random.choice(['evergreen', 'opensrf'])
+bugs = launchpad.projects[project].searchTasks(status = ['New', 'Triaged', 'Confirmed'], tags = 'pullrequest')
 
 bug = random.choice(bugs)
-browser = launchpad._browser
-bugInfo = json.loads(browser.get(bug.self_link))
-print(bugInfo['title'])
-print(bugInfo['web_link'])
+print(bug.title + ' -- ' + bug.web_link)

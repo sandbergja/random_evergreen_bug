@@ -1,12 +1,14 @@
 # random_evergreen_bug
-Get a random bug from the Evergreen bug tracker database on Launchpad
 
-Installation
-------------
+Get a random bug from the Evergreen or OpenSRF bug tracker database on Launchpad.
 
-`pip install launchpadlib`
+## Setting this up
 
-Usage
-------------
+1. `pip install pipenv`
+1. `pipenv shell`
 
-`python random_bug.py`
+## Usage
+
+```
+python random_bug.py
+```
